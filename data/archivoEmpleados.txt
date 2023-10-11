@@ -1,3 +1,4 @@
+usuario:contraseña
 admin:claveAdmin
 empleado:claveEmpleado
 adminSede:claveAdminSede

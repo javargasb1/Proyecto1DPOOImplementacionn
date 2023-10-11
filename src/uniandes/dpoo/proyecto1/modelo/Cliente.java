@@ -7,7 +7,7 @@ public class Cliente
 	private String fechaNacimiento;
 	private String nacionalidad;
 	private String imagenDocumento;
-	private LicenciaConduccion datosLicencia;
+	private LicenciaConduccion datosLicencia;               
 	private String datosTarjeta;
 	
 	public Cliente(String nombre, String datosContacto, String fechaNacimiento, 

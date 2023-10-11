@@ -18,19 +18,20 @@ public class LoaderUsuarios
 		 usuariosClientes = new HashMap<String,String>();
 		 
 		 BufferedReader br = new BufferedReader(new FileReader(archivoClientes));
-			String linea = br.readLine();
-			while (linea != null)
-			{
-				String[] partes = linea.split(":");
-				String usuarioCliente = partes[0];
-				String contraseñaCliente = partes[1];
-				
-				usuariosClientes.put(usuarioCliente, contraseñaCliente);
-				listaUsuarios.add(usuarioCliente);
-				linea = br.readLine();
-			}
-			br.close();
-			return usuariosClientes;
+		 String linea = br.readLine();
+		 linea = br.readLine();
+		 while (linea != null)
+		 {
+			 String[] partes = linea.split(":");
+			 String usuarioCliente = partes[0];
+			 String contraseñaCliente = partes[1];
+			 
+			 usuariosClientes.put(usuarioCliente, contraseñaCliente);
+			 listaUsuarios.add(usuarioCliente);
+			 linea = br.readLine();
+		 }
+		 br.close();
+		 return usuariosClientes;
 	}
 	
 	private static HashMap<String,String> cargarEmpleados(String archivoEmpleados) throws IOException
@@ -39,6 +40,7 @@ public class LoaderUsuarios
 		
 		BufferedReader br = new BufferedReader(new FileReader(archivoEmpleados));
 		String linea = br.readLine();
+		linea = br.readLine();
 		while (linea != null)
 		{
 			String[] partes = linea.split(":");

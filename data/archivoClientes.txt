@@ -1,3 +1,4 @@
+usuario:contraseña
 cliente1:claveCliente1
 cliente2:claveCliente2
 cliente3:claveCliente3
