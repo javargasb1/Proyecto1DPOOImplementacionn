@@ -1,0 +1,3 @@
+admin:claveAdmin
+empleado:claveEmpleado
+adminSede:claveAdminSede

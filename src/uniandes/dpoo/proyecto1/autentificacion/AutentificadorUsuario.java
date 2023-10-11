@@ -9,8 +9,8 @@ public class AutentificadorUsuario
 	
 	public AutentificadorUsuario(String login, String contraseña) throws IOException
 	{
-		String archivoClientes = "";
-		String archivoEmpleados = "";
+		String archivoClientes = "data/archivoClientes.txt";
+		String archivoEmpleados = "data/archivoEmpleados";
 		
 		HashMap<String,String> usuariosClientes = LoaderUsuarios.getUsuariosClientes(archivoClientes);
 		HashMap<String,String> usuariosEmpleados = LoaderUsuarios.getUsuariosEmpleados(archivoEmpleados);
