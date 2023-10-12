@@ -1,13 +1,9 @@
-package uniandes.dpoo.proyecto1.procesamiento;
+package uniandes.dpoo.proyecto1.modelo;
 
 import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.modelo.Inventario;
-import uniandes.dpoo.proyecto1.modelo.Reserva;
-import uniandes.dpoo.proyecto1.modelo.Sede;
-
-public class Sistema
-{
+public class Sistema {
+	
 	private Inventario inventario;
 	private ArrayList<Sede> catalogoSedes;
 	private ArrayList<Reserva> reservas;
@@ -20,5 +16,5 @@ public class Sistema
 		
 		
 	}
-	
+
 }

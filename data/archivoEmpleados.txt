@@ -1,4 +1,5 @@
 usuario:contraseña
-admin:claveAdmin
-empleado:claveEmpleado
-adminSede:claveAdminSede
+empleado:claveEmpleado:ActualizadorEstadoVehiculo:Pepito:Usaquen
+adminSede:claveAdminSede:AdministradorLocal:Juan:Usaquen
+empleado:claveEmpleado:ActualizadorEstadoVehiculo:Emilio:Chapinero
+adminSede:claveAdminSede:AdministradorLocal:Laura:Chapinero

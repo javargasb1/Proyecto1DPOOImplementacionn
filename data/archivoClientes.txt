@@ -1,4 +1,4 @@
 usuario:contraseña
-cliente1:claveCliente1
-cliente2:claveCliente2
-cliente3:claveCliente3
+cliente1:claveCliente1:Laura Garzon:3115148796,l.garzon@gmail.com:25/01/2003:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,24/12/2030
+cliente2:claveCliente2:Laura Garzon:3115148796,l.garzon@gmail.com:25/01/2003:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,24/12/2030
+cliente3:claveCliente3:Laura Garzon:3115148796,l.garzon@gmail.com:25/01/2003:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,24/12/2030

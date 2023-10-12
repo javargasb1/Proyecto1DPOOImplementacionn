@@ -1,0 +1,3 @@
+ChapiRenta:Chapinero:8-19
+ChapiAlquila:Chapinero:7-18
+UsaquenAlquila:Usaquen:8-17
