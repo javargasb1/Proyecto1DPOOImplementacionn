@@ -2,35 +2,52 @@ package uniandes.dpoo.proyecto1.procesamiento;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.modelo.Inventario;
+import uniandes.dpoo.proyecto1.modelo.Empleado;
+import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
 import uniandes.dpoo.proyecto1.modelo.Sede;
 import uniandes.dpoo.proyecto1.modelo.TarifaVehiculo;
+import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 public class LoaderInventario
 {
-	public Inventario cargarInventario(String archivoInventario)
+	
+public static ArrayList<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
+	
+	public static ArrayList<Vehiculo> cargarInventario(String archivoInventario, ArrayList<Sede> listaSedes) throws IOException
 	{
+		
 		BufferedReader br = new BufferedReader(new FileReader(archivoInventario));
 		String linea = br.readLine();
 		while (linea != null)
 		{
-			String[] partes = linea.split(";");
+			String[] partes = linea.split(":");
 			String placa = partes[0];
 			String marca = partes[1];
 			String modelo = partes[2];
-			String color = partes[0];
-			String tipoTransmision = partes[3];
-			String categoria = partes[4];
-			Sede ubicacion = partes[5];
-			String estado = partes[6];
-			TarifaVehiculo tarifa = partes[7];
-			String fechaDisponibilidad = partes[8];
-			
-			
+			String color = partes[3];
+			String tipoTransmision = partes[4];
+			String categoria = partes[5];
+			String ubicacion1 = partes[6];
+			Sede sedeActual= listaSedes.get(0);
+			for (Sede sede: listaSedes) {
+				String ubicacionSede = sede.getnombre();
+				if(ubicacionSede.equals(ubicacion1)) {
+					sedeActual = sede;
+				}
+			}
+			String precio = partes[7];
+			Vehiculo nuevo = new Vehiculo(placa, marca, modelo, color, tipoTransmision,categoria, sedeActual,precio);
+			listaVehiculos.add(nuevo);
 			linea = br.readLine();
-		 }
+			
+			}
+			
 		 br.close();
+		 
+		 return listaVehiculos;
 	}
 	
 }

@@ -25,4 +25,6 @@ public class TarifaVehiculo
 		this.conductoresAdicionales = conductoresAdicionales;
 		
 	}
+	
+	//reserva se cobra inmediatamente el 30% del valor proyectado del alquiler
 }

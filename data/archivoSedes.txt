@@ -1,0 +1,3 @@
+ChapiRenta;Chapinero;08:00-19:00
+ChapiAlquila;Chapinero;07:00-18:00
+UsaquenAlquila;Usaquen;08:00-17:00

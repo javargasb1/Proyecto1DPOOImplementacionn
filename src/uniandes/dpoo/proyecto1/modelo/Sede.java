@@ -1,20 +1,40 @@
 package uniandes.dpoo.proyecto1.modelo;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Sede
 {
 	private String nombre;
 	private String ubicacion;
-	private String horario;
+	private ArrayList<LocalTime> horario;
 	private ArrayList<Empleado> empleados;
 	
-	public Sede(String nombre,String ubicacion,String horario,
+	public Sede(String nombre,String ubicacion, ArrayList<LocalTime> horario,
 			ArrayList<Empleado> empleados)
 	{
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
 		this.horario = horario;
 		this.empleados = empleados;
+	}
+	
+	public String getnombre() {
+
+		return nombre;
+	}
+	
+	public String getUbi() {
+
+		return ubicacion;
+	}
+	
+	public ArrayList<LocalTime> gethorario() {
+
+		return horario;
+	}
+	public ArrayList<Empleado> getEmpleados() {
+
+		return empleados;
 	}
 }

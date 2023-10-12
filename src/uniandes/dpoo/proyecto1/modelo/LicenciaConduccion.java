@@ -8,11 +8,10 @@ public class LicenciaConduccion
 	private String imagenLicencia;
 	
 	public LicenciaConduccion(String numeroLicencia,String paisExpedicion,
-			String fechaVencimiento,String imagenLicencia)
+			String fechaVencimiento)
 	{
 		this.numeroLicencia = numeroLicencia;
 		this.paisExpedicion = paisExpedicion;
 		this.fechaVencimiento = fechaVencimiento;
-		this.imagenLicencia = imagenLicencia;
 	}
 }
