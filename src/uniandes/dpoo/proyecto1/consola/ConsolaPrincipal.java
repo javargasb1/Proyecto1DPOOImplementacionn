@@ -3,6 +3,9 @@ package uniandes.dpoo.proyecto1.consola;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,12 +17,12 @@ public class ConsolaPrincipal {
 	public Sistema sistema = new Sistema();
 	public static HashMap<String,String> usuariosClientes;
 	public static HashMap<String,String> usuariosEmpleados;
-	public static ArrayList<Empleado> listaEmpleados;
+	public static ArrayList<Usuario> listaEmpleados;
 	public static ArrayList<Cliente> listaClientes;
 	public static ArrayList<Sede> listaSedes;
 	public static ArrayList<Vehiculo> listaVehiculos;
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		ConsolaPrincipal consola = new ConsolaPrincipal();
 		consola.cargarDatos();
 		System.out.println(usuariosClientes);
@@ -27,7 +30,7 @@ public class ConsolaPrincipal {
 		
 	}
 	
-	public void cargarDatos() throws IOException {
+	public void cargarDatos() throws IOException, ParseException {
 		String archivoClientes = "data/archivoClientes.txt";
 		String archivoEmpleados = "data/archivoEmpleados.txt";
 		String archivoSedes = "data/archivoSedes.txt";
@@ -76,17 +79,18 @@ public class ConsolaPrincipal {
 			ArrayList<String> contacto = new ArrayList<String>();
 			contacto.add(contacto1);
 			contacto.add(contacto2);
-			String nacimiento = input ("\nIngrese su fecha de nacimiento con el formato dia/mes/ano: \n");
+			String nacimiento1 = input ("\nIngrese su fecha de nacimiento con el formato AA-MM-DD: \n");
+			LocalDate nacimiento= LocalDate.parse(nacimiento1);
 			String nacionalidad = input ("\nIngrese su nacionalidad: \n");
 			String documento = input ("\nIngrese su numero de documento: \n");
 			System.out.println("Porfavor Ingrese los datos de su licencia de conduccion: ");
 			String licencia1 = input ("\nIngrese su numero de licencia: \n");
 			String licencia2 = input ("\nIngrese el pais de expedicion: \n");
-			String licencia3 = input ("\nIngrese la fecha de vencimiento con el formato dia/mes/ano: \n");
-			LicenciaConduccion licencia = new LicenciaConduccion(licencia1, licencia2,licencia3);
+			String licencia3 = input ("\nIngrese la fecha de vencimiento con el formato AA-MM-DD: \n");
+			LicenciaConduccion licencia = new LicenciaConduccion(licencia1, licencia2, licencia3);
 			System.out.println("Porfavor Ingrese los datos de pago: ");
 			String pago1 = input ("\nIngrese su numero de su tarjeta de credito: \n");
-			String pago2 = input ("\nIngrese la fecha de vencimiento de su tarjeta con el formato dia/mes/ano: \n");
+			String pago2 = input ("\nIngrese la fecha de vencimiento de su tarjeta con el formato AA-MM-DD: \n");
 			ArrayList<String> pago = new ArrayList<String>();
 			pago.add(pago1);
 			pago.add(pago2);
@@ -134,7 +138,7 @@ public class ConsolaPrincipal {
 				Cliente usuario= AutentificadorCliente(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como cliente");
-					ConsolaCliente.mostrarConsolaCliente(usuario);
+					ControladorCliente.mostrarConsolaCliente(usuario);
 				}
 				else {
 					System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
@@ -142,10 +146,10 @@ public class ConsolaPrincipal {
 				}
 			
 		else if (opcion==2) {
-				Empleado usuario = AutentificadorEmpleado(login,clave);
+				Usuario usuario = AutentificadorEmpleado(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como empleado");
-					ConsolaEmpleado.mostrarConsolaEmpleado(usuario);
+					ControladorEmpleado.mostrarConsolaEmpleado(usuario);
 				}
 				else {
 				System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
@@ -177,13 +181,13 @@ public class ConsolaPrincipal {
 
 	}
 	
-	public Empleado AutentificadorEmpleado(String login, String clave) throws IOException
+	public Usuario AutentificadorEmpleado(String login, String clave) throws IOException
 	{
-		Empleado usuario= null;
+		Usuario usuario= null;
 		boolean encontrado = false;
 		int i=0;
 		while(encontrado==false && i < listaEmpleados.size()){
-			Empleado elEmpleado = listaEmpleados.get(i);
+			Usuario elEmpleado = listaEmpleados.get(i);
 			String login1 = elEmpleado.getLogin();
 			if(login.equals(login1)) {
 				if (clave.equals(usuariosEmpleados.get(login)))

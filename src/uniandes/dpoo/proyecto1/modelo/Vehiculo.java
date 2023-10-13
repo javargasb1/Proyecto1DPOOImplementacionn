@@ -75,4 +75,9 @@ public class Vehiculo
 		return precio;
 	}
 	
+	public void actualizarEstado(String nuevoEstado)
+	{
+		estado = nuevoEstado;
+	}
+	
 }

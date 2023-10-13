@@ -5,11 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.modelo.Empleado;
-import uniandes.dpoo.proyecto1.modelo.Inventario;
+import uniandes.dpoo.proyecto1.modelo.Usuario;
 import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
 import uniandes.dpoo.proyecto1.modelo.Sede;
-import uniandes.dpoo.proyecto1.modelo.TarifaVehiculo;
+import uniandes.dpoo.proyecto1.modelo.Categoria;
 import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 public class LoaderInventario

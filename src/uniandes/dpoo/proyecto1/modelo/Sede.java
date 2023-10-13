@@ -1,16 +1,17 @@
 package uniandes.dpoo.proyecto1.modelo;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Sede
 {
 	private String nombre;
 	private String ubicacion;
-	private ArrayList<Float> horario;
-	private ArrayList<Empleado> empleados;
+	private ArrayList<LocalTime> horario;
+	private ArrayList<Usuario> empleados;
 	
-	public Sede(String nombre,String ubicacion, ArrayList<Float> horario,
-			ArrayList<Empleado> empleados)
+	public Sede(String nombre,String ubicacion, ArrayList<LocalTime> horario,
+			ArrayList<Usuario> empleados)
 	{
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
@@ -28,11 +29,11 @@ public class Sede
 		return ubicacion;
 	}
 	
-	public ArrayList<Float> gethorario() {
+	public ArrayList<LocalTime> gethorario() {
 
 		return horario;
 	}
-	public ArrayList<Empleado> getEmpleados() {
+	public ArrayList<Usuario> getEmpleados() {
 
 		return empleados;
 	}

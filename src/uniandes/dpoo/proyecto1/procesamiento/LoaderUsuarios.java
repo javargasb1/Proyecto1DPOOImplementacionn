@@ -3,6 +3,7 @@ package uniandes.dpoo.proyecto1.procesamiento;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import uniandes.dpoo.proyecto1.modelo.*;
@@ -11,7 +12,7 @@ public class LoaderUsuarios
 {
 	public static HashMap<String,String> usuariosClientes;
 	public static HashMap<String,String> usuariosEmpleados;
-	public static ArrayList<Empleado> listaEmpleados = new ArrayList<Empleado>();
+	public static ArrayList<Usuario> listaEmpleados = new ArrayList<Usuario>();
 	public static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 	
 	
@@ -32,7 +33,7 @@ public class LoaderUsuarios
 			 ArrayList<String> contacto = new ArrayList<String>();
 			 contacto.add(contacto1[0]);
 			 contacto.add(contacto1[1]);
-			 String nacimiento = partes[4];
+			 LocalDate nacimiento = LocalDate.parse(partes[4]);
 			 String nacionalidad = partes[5];
 			 String documento = partes[6];
 			 String[] licencia1 = partes[7].split(",");
@@ -66,7 +67,7 @@ public class LoaderUsuarios
 			String tipoEmpleado = partes[2];
 			String nombre = partes[3];
 			String ubicacion = partes[4];
-			Empleado nuevo = new AdministradorLocal("","","","");
+			Usuario nuevo = new AdministradorLocal("","","","");
 			if (tipoEmpleado.equals("AdministradorLocal")) {
 			nuevo = new AdministradorLocal(usuarioEmpleado,contraseñaEmpleado,nombre,ubicacion);
 			}
@@ -94,7 +95,7 @@ public class LoaderUsuarios
 		return usuariosEmpleados;
 	}
 	
-	public static ArrayList<Empleado> getListaEmpleados()
+	public static ArrayList<Usuario> getListaEmpleados()
 	{
 		return listaEmpleados;
 	}

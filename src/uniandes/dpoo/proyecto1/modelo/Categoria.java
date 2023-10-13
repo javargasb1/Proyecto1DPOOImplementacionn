@@ -2,7 +2,7 @@ package uniandes.dpoo.proyecto1.modelo;
 
 import java.util.ArrayList;
 
-public class TarifaVehiculo
+public class Categoria
 {
 	private String categoria;
 	private String rangoFechas;
@@ -12,7 +12,7 @@ public class TarifaVehiculo
 	private ArrayList<Float> costoSeguros;
 	private ArrayList<LicenciaConduccion> conductoresAdicionales;
 	
-	public TarifaVehiculo(String categoria,String rangoFechas,String temporada,
+	public Categoria (String categoria,String rangoFechas,String temporada,
 			Sede sedeEntrega,float precio,ArrayList<Float> costoSeguros,
 			ArrayList<LicenciaConduccion> conductoresAdicionales)
 	{
@@ -25,4 +25,8 @@ public class TarifaVehiculo
 		this.conductoresAdicionales = conductoresAdicionales;
 		
 	}
+	
+	//reserva se cobra inmediatamente el 30% del valor proyectado del alquiler
+	
+	
 }
