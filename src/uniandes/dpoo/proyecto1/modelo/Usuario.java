@@ -1,6 +1,6 @@
 package uniandes.dpoo.proyecto1.modelo;
 
-public interface Empleado
+public interface Usuario
 {
 	public String getNombre();
 	public String getClave();

@@ -8,10 +8,10 @@ public class Sede
 	private String nombre;
 	private String ubicacion;
 	private ArrayList<LocalTime> horario;
-	private ArrayList<Empleado> empleados;
+	private ArrayList<Usuario> empleados;
 	
 	public Sede(String nombre,String ubicacion, ArrayList<LocalTime> horario,
-			ArrayList<Empleado> empleados)
+			ArrayList<Usuario> empleados)
 	{
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
@@ -33,7 +33,7 @@ public class Sede
 
 		return horario;
 	}
-	public ArrayList<Empleado> getEmpleados() {
+	public ArrayList<Usuario> getEmpleados() {
 
 		return empleados;
 	}

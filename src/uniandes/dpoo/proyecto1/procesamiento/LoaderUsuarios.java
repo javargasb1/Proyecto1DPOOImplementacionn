@@ -12,7 +12,7 @@ public class LoaderUsuarios
 {
 	public static HashMap<String,String> usuariosClientes;
 	public static HashMap<String,String> usuariosEmpleados;
-	public static ArrayList<Empleado> listaEmpleados = new ArrayList<Empleado>();
+	public static ArrayList<Usuario> listaEmpleados = new ArrayList<Usuario>();
 	public static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 	
 	
@@ -67,7 +67,7 @@ public class LoaderUsuarios
 			String tipoEmpleado = partes[2];
 			String nombre = partes[3];
 			String ubicacion = partes[4];
-			Empleado nuevo = new AdministradorLocal("","","","");
+			Usuario nuevo = new AdministradorLocal("","","","");
 			if (tipoEmpleado.equals("AdministradorLocal")) {
 			nuevo = new AdministradorLocal(usuarioEmpleado,contraseñaEmpleado,nombre,ubicacion);
 			}
@@ -95,7 +95,7 @@ public class LoaderUsuarios
 		return usuariosEmpleados;
 	}
 	
-	public static ArrayList<Empleado> getListaEmpleados()
+	public static ArrayList<Usuario> getListaEmpleados()
 	{
 		return listaEmpleados;
 	}

@@ -1,6 +1,6 @@
 package uniandes.dpoo.proyecto1.modelo;
 
-public class ActualizadorEstadoVehiculo implements Empleado{
+public class ActualizadorEstadoVehiculo implements Usuario{
 
 	private String nombre;
 	private String login;
@@ -36,7 +36,6 @@ public class ActualizadorEstadoVehiculo implements Empleado{
 	public String getWork() {
 		return "ActualizadorEstadoVehiculo";
 	}
-
 
 
 }

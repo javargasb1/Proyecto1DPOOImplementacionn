@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Cliente
+public class Cliente implements Usuario
 {
 	private String nombre;
 	private String login;
@@ -64,6 +64,18 @@ public class Cliente
 		
 		Reserva nuevaReserva = new Reserva(elCliente,categoria,sede,fechaRecogida,horaRecogida,especial,listaVehiculos,fechaDevuelta, rangoDeHoras,temporada,sedeEntrega,precio,costoSeguros,costoConductorAdicional, conductoresAdicionales);
 		return nuevaReserva;
+	}
+
+	@Override
+	public String getUbi() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getWork() {
+		// TODO Auto-generated method stub
+		return "Cliente";
 	}
 
 }

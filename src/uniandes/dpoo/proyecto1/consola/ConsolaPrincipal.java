@@ -17,7 +17,7 @@ public class ConsolaPrincipal {
 	public Sistema sistema = new Sistema();
 	public static HashMap<String,String> usuariosClientes;
 	public static HashMap<String,String> usuariosEmpleados;
-	public static ArrayList<Empleado> listaEmpleados;
+	public static ArrayList<Usuario> listaEmpleados;
 	public static ArrayList<Cliente> listaClientes;
 	public static ArrayList<Sede> listaSedes;
 	public static ArrayList<Vehiculo> listaVehiculos;
@@ -138,7 +138,7 @@ public class ConsolaPrincipal {
 				Cliente usuario= AutentificadorCliente(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como cliente");
-					ConsolaCliente.mostrarConsolaCliente(usuario);
+					ControladorCliente.mostrarConsolaCliente(usuario);
 				}
 				else {
 					System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
@@ -146,10 +146,10 @@ public class ConsolaPrincipal {
 				}
 			
 		else if (opcion==2) {
-				Empleado usuario = AutentificadorEmpleado(login,clave);
+				Usuario usuario = AutentificadorEmpleado(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como empleado");
-					ConsolaEmpleado.mostrarConsolaEmpleado(usuario);
+					ControladorEmpleado.mostrarConsolaEmpleado(usuario);
 				}
 				else {
 				System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
@@ -181,13 +181,13 @@ public class ConsolaPrincipal {
 
 	}
 	
-	public Empleado AutentificadorEmpleado(String login, String clave) throws IOException
+	public Usuario AutentificadorEmpleado(String login, String clave) throws IOException
 	{
-		Empleado usuario= null;
+		Usuario usuario= null;
 		boolean encontrado = false;
 		int i=0;
 		while(encontrado==false && i < listaEmpleados.size()){
-			Empleado elEmpleado = listaEmpleados.get(i);
+			Usuario elEmpleado = listaEmpleados.get(i);
 			String login1 = elEmpleado.getLogin();
 			if(login.equals(login1)) {
 				if (clave.equals(usuariosEmpleados.get(login)))

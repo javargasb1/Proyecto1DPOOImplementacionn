@@ -17,7 +17,7 @@ public class LoaderSedes
 {
 	public static ArrayList<Sede> listaSedes = new ArrayList<Sede>();
 	
-	public static ArrayList<Sede> cargarSedes(String archivoSedes, ArrayList<Empleado> listaEmpleados) throws IOException, ParseException
+	public static ArrayList<Sede> cargarSedes(String archivoSedes, ArrayList<Usuario> listaEmpleados) throws IOException, ParseException
 	{
 		
 		BufferedReader br = new BufferedReader(new FileReader(archivoSedes));
@@ -35,8 +35,8 @@ public class LoaderSedes
 			horario.add(horario1);
 			horario.add(horario2);
 			
-			ArrayList<Empleado> empleadosSede= new ArrayList<Empleado>();
-			for (Empleado empleado: listaEmpleados) {
+			ArrayList<Usuario> empleadosSede= new ArrayList<Usuario>();
+			for (Usuario empleado: listaEmpleados) {
 				String ubicacionEmpleado = empleado.getUbi();
 				if(ubicacionEmpleado.equals(ubicacion)) {
 					empleadosSede.add(empleado);

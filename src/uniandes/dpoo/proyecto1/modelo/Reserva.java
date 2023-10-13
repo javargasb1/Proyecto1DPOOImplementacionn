@@ -83,10 +83,7 @@ public class Reserva
 		
 		Month mes = fechaRecogida.getMonth();
 		//Se encuentra si el mes para hacer la reserva es junio, julio, diciembre o enero para saber si es temporada alta
-		if (mes.equals("JANUARY") 
-		{
-			
-		}
+	
 		
 		return temporada;
 		

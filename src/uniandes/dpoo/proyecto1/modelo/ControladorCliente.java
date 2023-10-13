@@ -1,4 +1,4 @@
-package uniandes.dpoo.proyecto1.consola;
+package uniandes.dpoo.proyecto1.modelo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,14 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.modelo.Cliente;
-import uniandes.dpoo.proyecto1.modelo.Inventario;
-import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
-import uniandes.dpoo.proyecto1.modelo.Reserva;
-import uniandes.dpoo.proyecto1.modelo.Sede;
-import uniandes.dpoo.proyecto1.modelo.Vehiculo;
+import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 
-public class ConsolaCliente
+public class ControladorCliente
 {
 	private static String categoria;
 	private static String sede;
@@ -162,8 +157,11 @@ public class ConsolaCliente
 		LocalTime horaInf= LocalTime.parse(horainf1);
 		String horasup1 = input("\nAhora ingrese la hora superior en formato HH:MM : \n");
 		LocalTime horaSup= LocalTime.parse(horasup1);
+		rangoDeHoras = new ArrayList<LocalTime>() ;
 		rangoDeHoras.add(horaInf);
 		rangoDeHoras.add(horaSup);
+		//NO SIRVE
+		System.out.println(rangoDeHoras);
 		
 		reserva = elCliente.crearReserva(elCliente,categoria,sedeRecoger,fechaRecogida,horaRecogida,especial,listaVehiculos,fechaDevuelta,rangoDeHoras,temporada,sedeEntrega,precio,costoSeguros,costoConductorAdicional, conductoresAdicionales);
 		return reserva;
@@ -176,8 +174,8 @@ public class ConsolaCliente
 				
 		//revisar que si sea hroa de recogerlo (COMO SACAR FECHA ACTUAL)
 		LocalTime ahora = LocalTime.now();
-		reserva.
-		if (ahora.equals(rangoDeFechas))
+		//arreglar
+		if (ahora.equals(""))
 		{
 		System.out.println("\n----------- ES HORA DE RECOGER TU VEHICULO ----------- \n");
 		String conductor = input("\nHabrán otros conductores? (SI/NO): \n");
