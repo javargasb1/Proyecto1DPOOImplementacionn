@@ -61,8 +61,25 @@ public class Cliente implements Usuario
 	
 	public Reserva crearReserva(Cliente elCliente,String categoria,Sede sede,LocalDate fechaRecogida,LocalTime horaRecogida,boolean especial,ArrayList<Vehiculo>  listaVehiculos,LocalDate fechaDevuelta, ArrayList<LocalTime>rangoDeHoras,String temporada,Sede sedeEntrega,Double precio,ArrayList<Double> costoSeguros,Double costoConductorAdicional, ArrayList<LicenciaConduccion> conductoresAdicionales)
 	{
-		
 		Reserva nuevaReserva = new Reserva(elCliente,categoria,sede,fechaRecogida,horaRecogida,especial,listaVehiculos,fechaDevuelta, rangoDeHoras,temporada,sedeEntrega,precio,costoSeguros,costoConductorAdicional, conductoresAdicionales);
+		ArrayList<Usuario> listaempleados = Sede.getEmpleados();
+		boolean encontrado = false;
+		int i = 0;
+		Usuario empleadoreal = null;
+		Usuario empleado;
+		while(encontrado == false && i<listaempleados.size())
+		{
+			empleado = listaempleados.get(i);
+			if (empleadoreal.getWork().equals("ActualizadorEstadoVehiculo"))
+			{
+				encontrado = true;
+				empleadoreal = empleado;
+			}
+			i +=1;
+				
+		}
+		ActualizadorEstadoVehiculo actualizar = new ActualizadorEstadoVehiculo(empleadoreal.getLogin(), empleadoreal.getClave(), empleadoreal.getNombre(), empleadoreal.getUbi());
+		actualizar.actualizarEstado(fechaRecogida, fechaDevuelta);
 		return nuevaReserva;
 	}
 

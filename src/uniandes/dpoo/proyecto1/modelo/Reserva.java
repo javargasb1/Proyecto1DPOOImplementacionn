@@ -78,13 +78,24 @@ public class Reserva
 	{
 		return fechaDevuelta;
 	}
+	public String getTemporada()
+	{
+		return temporada;
+	}
 	
-	public String actualizarTemporada(LocalDate fechaRecogida, String temporada) {
-		
+	public String actualizarTemporada(LocalDate fechaRecogida) {
 		Month mes = fechaRecogida.getMonth();
+		int mesletra = mes.getValue();
+		System.out.println(mesletra);
+		if (mesletra == 6 || mesletra == 7|| mesletra == 12 || mesletra == 1)
+		{
 		//Se encuentra si el mes para hacer la reserva es junio, julio, diciembre o enero para saber si es temporada alta
-	
-		
+			temporada = "Alta";
+		}
+		else
+		{
+			temporada = "Baja";
+		}
 		return temporada;
 		
 	}

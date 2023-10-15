@@ -113,7 +113,8 @@ public class ControladorEmpleado
 		}
 		estado =  "Disponible";
 		precio =  input("\nIngresa el precio de alquiler del nuevo vehiculo:");
-		AdministradorLocal.nuevoVehiculo(placa,marca,modelo, color, tipoTransmision, categoria, ubicacion, precio);
+		Double precioreal = Double.parseDouble(precio);
+		AdministradorLocal.nuevoVehiculo(placa,marca,modelo, color, tipoTransmision, categoria, ubicacion, precioreal);
 		System.out.println("\nEL VEHICULO HA SIDO REGISTRADO EXITOSAMENTE ");
 	
 	}

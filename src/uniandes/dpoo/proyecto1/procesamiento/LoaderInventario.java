@@ -39,7 +39,8 @@ public static ArrayList<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
 				}
 			}
 			String precio = partes[7];
-			Vehiculo nuevo = new Vehiculo(placa, marca, modelo, color, tipoTransmision,categoria, sedeActual,precio);
+			Double precioreal = Double.parseDouble(precio);
+			Vehiculo nuevo = new Vehiculo(placa, marca, modelo, color, tipoTransmision,categoria, sedeActual,precioreal);
 			listaVehiculos.add(nuevo);
 			linea = br.readLine();
 			
