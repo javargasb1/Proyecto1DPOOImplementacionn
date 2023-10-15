@@ -1,5 +1,7 @@
 package uniandes.dpoo.proyecto1.modelo;
 
+import java.time.LocalDate;
+
 public class ActualizadorEstadoVehiculo implements Usuario{
 
 	private String nombre;
@@ -37,5 +39,10 @@ public class ActualizadorEstadoVehiculo implements Usuario{
 		return "ActualizadorEstadoVehiculo";
 	}
 
+	public void actualizarEstado(LocalDate fechaRecogida, LocalDate fechaDevuelta)
+	{
+		Vehiculo.bloquearDisponibilidad(fechaRecogida,fechaDevuelta);;
+		
+	}
 
 }

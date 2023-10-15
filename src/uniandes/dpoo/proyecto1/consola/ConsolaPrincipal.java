@@ -21,6 +21,7 @@ public class ConsolaPrincipal {
 	public static ArrayList<Cliente> listaClientes;
 	public static ArrayList<Sede> listaSedes;
 	public static ArrayList<Vehiculo> listaVehiculos;
+	public static ArrayList<Seguro> listaSeguros;
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		ConsolaPrincipal consola = new ConsolaPrincipal();
@@ -35,12 +36,14 @@ public class ConsolaPrincipal {
 		String archivoEmpleados = "data/archivoEmpleados.txt";
 		String archivoSedes = "data/archivoSedes.txt";
 		String archivoVehiculos = "data/archivoInventario.txt";
+		String archivoSeguros = "data/archivoSeguros.txt";
 		usuariosClientes = LoaderUsuarios.getUsuariosClientes(archivoClientes);
 		usuariosEmpleados = LoaderUsuarios.getUsuariosEmpleados(archivoEmpleados);
 		listaEmpleados = LoaderUsuarios.getListaEmpleados();
 		listaClientes = LoaderUsuarios.getListaClientes();
 		listaSedes = LoaderSedes.cargarSedes(archivoSedes,listaEmpleados);
 		listaVehiculos = LoaderInventario.cargarInventario(archivoVehiculos,listaSedes);
+		
 	}
 	
 	public void ejecutarConsolaAdministrador() throws IOException {

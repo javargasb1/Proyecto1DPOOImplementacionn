@@ -108,15 +108,12 @@ public class ControladorCliente
 		if (respuesta.equals("SI"))
 		{
 			especial = true;
-					//TOVCA HACER TXT CON COSTOS
-			System.out.println(costoSeguros.get(i));
+			//MOSTRAR SEGUROS
 			String respuesta1 = input("\nDeseas anadir seguros adicionales? (SI/NO): \n");
 			if (respuesta1.equals("SI"))
 			{
 				String seguro = input("\nQue seguro deseas adicionar: \n");
-				//sacar precio seguro
-				Double precioSeguro;
-				//llamr tarifa vehiculo
+				//FALTAAAA llamar a seguro
 			}
 		}
 		else
@@ -160,10 +157,9 @@ public class ControladorCliente
 		rangoDeHoras = new ArrayList<LocalTime>() ;
 		rangoDeHoras.add(horaInf);
 		rangoDeHoras.add(horaSup);
-		//NO SIRVE
-		System.out.println(rangoDeHoras);
 		
 		reserva = elCliente.crearReserva(elCliente,categoria,sedeRecoger,fechaRecogida,horaRecogida,especial,listaVehiculos,fechaDevuelta,rangoDeHoras,temporada,sedeEntrega,precio,costoSeguros,costoConductorAdicional, conductoresAdicionales);
+		String temporada = reserva.actualizarTemporada(fechaRecogida);
 		return reserva;
 	}
 
@@ -172,18 +168,38 @@ public class ControladorCliente
 		//cuando el vehículo se recoge se debe pagar por el servicio completo. Además, en el momento en el que se recoge un vehículo la agencia realiza un bloqueo sobre la tarjeta de crédito 
 		//del cliente que es desactivado cuando se entrega de nuevo en una sede de la empresa
 				
-		//revisar que si sea hroa de recogerlo (COMO SACAR FECHA ACTUAL)
-		LocalTime ahora = LocalTime.now();
-		//arreglar
-		if (ahora.equals(""))
+		LocalDate fecha = reserva.getfechaRecogida();
+		LocalTime hora =reserva.gethoraRecogida();
+		LocalDate ahorafecha = LocalDate.now();
+		Sede sedeRecoger = reserva.getsede();
+
+		boolean encontrado = false;
+		int i = 0;
+		ArrayList<LocalTime> horario;
+		LocalTime horainf = null;
+		LocalTime horasup = null;
+		while(encontrado == false && i<ConsolaPrincipal.listaSedes.size())
+		{
+			sedeRecoger = ConsolaPrincipal.listaSedes.get(i);
+			if (sedeRecoger.getnombre().equals(sede))
+			{
+				encontrado = true;
+				horario = sedeRecoger.gethorario();
+				horainf = horario.get(0);
+				horasup = horario.get(1);
+			}
+			i +=1;
+				
+		}
+		
+		if (ahorafecha.equals(fecha) && hora.isAfter(horainf)&& hora.isBefore(horasup))
 		{
 		System.out.println("\n----------- ES HORA DE RECOGER TU VEHICULO ----------- \n");
 		String conductor = input("\nHabrán otros conductores? (SI/NO): \n");
 		if (conductor == "SI")
 		{
-					//llamar tarifa vehiculo
-					
-					//llamar licencia conducotr
+			ConductorAdicional nuevoConductor = new ConductorAdicional();
+			//FALTA
 		}
 				
 		}

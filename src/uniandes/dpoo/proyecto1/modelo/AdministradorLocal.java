@@ -40,7 +40,7 @@ public class AdministradorLocal implements Usuario{
 		return "AdministradorLocal";
 	}
 
-	public static void nuevoVehiculo(String placa,String marca,String modelo,String color,String tipoTransmision, String categoria,Sede ubicacion,String precio)
+	public static void nuevoVehiculo(String placa,String marca,String modelo,String color,String tipoTransmision, String categoria,Sede ubicacion,Double precio)
 	{
 		Vehiculo nuevoVehiculo = new Vehiculo(placa,marca,modelo, color, tipoTransmision, categoria, ubicacion, precio);
 		ConsolaPrincipal.listaVehiculos.add(nuevoVehiculo);
