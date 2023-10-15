@@ -1,15 +1,11 @@
 package uniandes.dpoo.proyecto1.procesamiento;
 
 import java.io.BufferedReader;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Hashtable;
 
 import uniandes.dpoo.proyecto1.modelo.*;
 
@@ -22,6 +18,7 @@ public class LoaderSedes
 		
 		BufferedReader br = new BufferedReader(new FileReader(archivoSedes));
 		String linea = br.readLine();
+		linea = br.readLine();
 		while (linea != null)
 		{
 			String[] partes = linea.split(";");

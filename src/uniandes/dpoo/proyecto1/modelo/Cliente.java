@@ -15,19 +15,8 @@ public class Cliente implements Usuario
 	private String imagenDocumento;
 	private LicenciaConduccion datosLicencia;               
 	private ArrayList<String> datosTarjeta;
-	private String categoria;
-	private Sede sede;
-	private LocalDate fechaRecogida;
-	private boolean especial;
+
 	
-	private ArrayList<Vehiculo>  listaVehiculos;
-	private ArrayList<LocalDate> rangoDeFechas;
-	private String temporada;
-	private Sede sedeEntrega;
-	private Double precio;
-	private ArrayList<Double> costoSeguros;
-	private Double costoConductorAdicional;
-	private ArrayList<LicenciaConduccion> conductoresAdicionales;
 	
 	public Cliente(String nombre, String login, String clave, ArrayList<String> datosContacto, LocalDate nacimiento, 
 			String nacionalidad, String imagenDocumento,
@@ -58,6 +47,10 @@ public class Cliente implements Usuario
 
 		return nombre;
 	}
+	public ArrayList<String> getDatosContacto() {
+
+		return datosContacto;
+	}
 	
 	public Reserva crearReserva(Cliente elCliente,String categoria,Sede sede,LocalDate fechaRecogida,LocalTime horaRecogida,boolean especial,ArrayList<Vehiculo>  listaVehiculos,LocalDate fechaDevuelta, ArrayList<LocalTime>rangoDeHoras,String temporada,Sede sedeEntrega,Double precio,ArrayList<Double> costoSeguros,Double costoConductorAdicional, ArrayList<LicenciaConduccion> conductoresAdicionales)
 	{
@@ -85,14 +78,37 @@ public class Cliente implements Usuario
 
 	@Override
 	public String getUbi() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public String getWork() {
-		// TODO Auto-generated method stub
+		
 		return "Cliente";
+	}
+
+	public String getNacionalidad() {
+		
+		return nacionalidad;
+	}
+
+	public String getDocumento() {
+		return imagenDocumento;
+	}
+
+	public LicenciaConduccion getLicencia() {
+		return datosLicencia;
+	}
+
+	public ArrayList<String> getPago() {
+
+		return datosTarjeta;
+	}
+
+	public LocalDate getNacimiento() {
+	
+		return fechaNacimiento;
 	}
 
 }

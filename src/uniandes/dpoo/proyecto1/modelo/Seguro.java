@@ -1,7 +1,5 @@
 package uniandes.dpoo.proyecto1.modelo;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class Seguro
 {
@@ -14,4 +12,12 @@ public class Seguro
 		this.precio = precio;
 	}
 	
+	public String getNombre() {
+		return nombre;
+		
+	}
+	
+	public Double getPrecio() {
+		return precio;
+	}
 }

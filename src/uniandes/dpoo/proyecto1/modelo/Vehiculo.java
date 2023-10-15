@@ -1,7 +1,6 @@
 package uniandes.dpoo.proyecto1.modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +107,10 @@ public class Vehiculo
         }
         return true;
 		
+	}
+
+	public String getColor() {
+		return color;
 	}
 	
 }

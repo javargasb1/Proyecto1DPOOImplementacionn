@@ -5,7 +5,6 @@ public class LicenciaConduccion
 	private String numeroLicencia;
 	private String paisExpedicion;
 	private String fechaVencimiento;
-	private String imagenLicencia;
 	
 	public LicenciaConduccion(String numeroLicencia,String paisExpedicion,
 			String fechaVencimiento)
@@ -13,5 +12,17 @@ public class LicenciaConduccion
 		this.numeroLicencia = numeroLicencia;
 		this.paisExpedicion = paisExpedicion;
 		this.fechaVencimiento = fechaVencimiento;
+	}
+	
+	public String getNumero() {
+		return numeroLicencia;
+	}
+	
+	public String getPais() {
+		return paisExpedicion;
+	}
+	
+	public String getFecha() {
+		return fechaVencimiento;
 	}
 }

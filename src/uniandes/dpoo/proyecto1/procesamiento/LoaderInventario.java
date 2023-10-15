@@ -4,11 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import uniandes.dpoo.proyecto1.modelo.Usuario;
-import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
 import uniandes.dpoo.proyecto1.modelo.Sede;
-import uniandes.dpoo.proyecto1.modelo.Categoria;
 import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 public class LoaderInventario
@@ -21,6 +17,7 @@ public static ArrayList<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
 		
 		BufferedReader br = new BufferedReader(new FileReader(archivoInventario));
 		String linea = br.readLine();
+		linea = br.readLine();
 		while (linea != null)
 		{
 			String[] partes = linea.split(":");

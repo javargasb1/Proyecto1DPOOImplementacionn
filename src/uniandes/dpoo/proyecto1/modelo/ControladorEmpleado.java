@@ -1,6 +1,8 @@
 package uniandes.dpoo.proyecto1.modelo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalTime;
@@ -20,7 +22,7 @@ public class ControladorEmpleado
 	private static String estado;
 	private static String precio;
 	
-	public static void mostrarConsolaEmpleado(Usuario elEmpleado)
+	public static void mostrarConsolaEmpleado(Usuario elEmpleado) throws IOException
 	{
 		String trabajo = elEmpleado.getWork();
 	
@@ -34,7 +36,7 @@ public class ControladorEmpleado
 		}
 	}
 	
-	public static void mostrarMenuAdmin()
+	public static void mostrarMenuAdmin() throws IOException
 	{
 		boolean seguir = true;
 		while (seguir)
@@ -69,6 +71,17 @@ public class ControladorEmpleado
 		System.out.println("\n Bienvenido Empleado ");
 		System.out.println("\nOpciones de la aplicación\n");
 		System.out.println("1. Actualizar estado de vehiculo");
+		System.out.println("2. Salir");
+		int opcion1 = Integer.parseInt(input("Por favor seleccione una opción:"));
+		 if (opcion1 ==1 ) 
+		 {
+			
+		 }
+		 if (opcion1 ==2)
+		 {
+			 continuar=false;
+		 }
+		
 		
 		}
 	}
@@ -89,7 +102,7 @@ public class ControladorEmpleado
 		return null;
 	}
 	
-	public static void registrarCompra() 
+	public static void registrarCompra() throws IOException 
 	{
 		System.out.println("\n----------- COMENCEMOS A REGISTAR LA COMPRA ----------- ");
 		placa = input("\nIngresa la placa del nuevo vehiculo:");
@@ -119,12 +132,12 @@ public class ControladorEmpleado
 	
 	}
 	
-	public static void darBaja()
+	
+	public static void darBaja() throws IOException
 	{
 		System.out.println("\n----------- VAMOS A DAR DE BAJA A UN VEHICULO ----------- ");
 		String vehiculobaja = input("\nIngresa la placa del vehiculo que vamos a dar de baja:");
 		AdministradorLocal.darBajaVehiculo(vehiculobaja);
-		System.out.println("\nEL VEHICULO HA SIDO DADO DE BAJA EXITOSAMENTE ");
 		
 	}
 
