@@ -18,8 +18,6 @@ public class ControladorEmpleado
 	private static String color;
 	private static String tipoTransmision;
 	private static String categoria;
-	private static Sede ubicacion;
-	private static String estado;
 	private static String precio;
 	
 	public static void mostrarConsolaEmpleado(Usuario elEmpleado) throws IOException
@@ -124,7 +122,6 @@ public class ControladorEmpleado
 			}
 			q +=1;
 		}
-		estado =  "Disponible";
 		precio =  input("\nIngresa el precio de alquiler del nuevo vehiculo:");
 		Double precioreal = Double.parseDouble(precio);
 		AdministradorLocal.nuevoVehiculo(placa,marca,modelo, color, tipoTransmision, categoria, ubicacion, precioreal);

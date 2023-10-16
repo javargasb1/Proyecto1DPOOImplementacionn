@@ -18,13 +18,14 @@ public class Reserva
 	private String temporada;
 	private Sede sedeEntrega;
 	private Double precio;
-	private ArrayList<Double> costoSeguros;
+	private ArrayList<Seguro> costoSeguros;
 	private Double costoConductorAdicional;
-	private ArrayList<LicenciaConduccion> conductoresAdicionales;
+	private ArrayList<ConductorAdicional> conductoresAdicionales;
 	private Cliente elCliente;
+	private Vehiculo elVehiculo;
 	
 	
-	public Reserva(Cliente elCliente,String categoria,Sede sede,LocalDate fechaRecogida,LocalTime horaRecogida,boolean especial,ArrayList<Vehiculo>  listaVehiculos,LocalDate fechaDevuelta, ArrayList<LocalTime>  rangoDeHoras,String temporada,Sede sedeEntrega,Double precio,ArrayList<Double> costoSeguros,Double costoConductorAdicional, ArrayList<LicenciaConduccion> conductoresAdicionales)
+	public Reserva(Cliente elCliente,String categoria,Sede sede,LocalDate fechaRecogida,LocalTime horaRecogida,boolean especial,ArrayList<Vehiculo>  listaVehiculos,LocalDate fechaDevuelta, ArrayList<LocalTime>  rangoDeHoras,String temporada,Sede sedeEntrega,Double precio,ArrayList<Seguro> costoSeguros,Double costoConductorAdicional, ArrayList<ConductorAdicional> conductoresAdicionales, Vehiculo vehiculoReservado)
 	{
 		this.elCliente = elCliente;
 		this.categoria = categoria;
@@ -41,6 +42,7 @@ public class Reserva
 		this.costoSeguros = costoSeguros;
 		this.costoConductorAdicional = costoConductorAdicional;
 		this.conductoresAdicionales = conductoresAdicionales;
+		this.elVehiculo= vehiculoReservado;
 		
 	}
 
@@ -83,7 +85,7 @@ public class Reserva
 		return temporada;
 	}
 	
-	public String actualizarTemporada(LocalDate fechaRecogida) {
+	public void actualizarTemporada(LocalDate fechaRecogida) {
 		Month mes = fechaRecogida.getMonth();
 		int mesletra = mes.getValue();
 		System.out.println(mesletra);
@@ -96,7 +98,58 @@ public class Reserva
 		{
 			temporada = "Baja";
 		}
-		return temporada;
+		
+	}
+
+	public void actualizarConductores(Double costoConductorAdicional2,
+			ArrayList<ConductorAdicional> conductoresAdicionales2) {
+		costoConductorAdicional=costoConductorAdicional2;
+		conductoresAdicionales=conductoresAdicionales2;
+		
+	}
+
+	public Vehiculo getVehiculo() {
+		return elVehiculo;
+		
+	}
+
+	public ArrayList<LocalTime> gethorasDevuelta() {
+		return rangoDeHoras;
+	}
+	public Sede getsedeEntrega()
+	{
+		return sedeEntrega;
+	}
+
+	public String getEspecial() {
+		String esp="0";
+		if (especial==true) {
+			esp="1";
+		}
+		return esp;
+	}
+
+	public Object getPrecio() {
+		return precio;
+	}
+
+	public ArrayList<Seguro> getCostosSeguro() {
+		// TODO Auto-generated method stub
+		return costoSeguros;
+	}
+
+	public Double getCostoConductorAdicional() {
+		// TODO Auto-generated method stub
+		return costoConductorAdicional;
+	}
+
+	public ArrayList<ConductorAdicional> getConductores() {
+		// TODO Auto-generated method stub
+		return conductoresAdicionales;
+	}
+
+	public void actualizarPrecio() {
+		precio = elVehiculo.getPrecio();
 		
 	}
 	

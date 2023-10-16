@@ -2,6 +2,8 @@ package uniandes.dpoo.proyecto1.modelo;
 
 import java.time.LocalDate;
 
+import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
+
 public class ActualizadorEstadoVehiculo implements Usuario{
 
 	private String nombre;
@@ -39,10 +41,29 @@ public class ActualizadorEstadoVehiculo implements Usuario{
 		return "ActualizadorEstadoVehiculo";
 	}
 
-	public void actualizarEstado(LocalDate fechaRecogida, LocalDate fechaDevuelta)
+	public Vehiculo actualizarEstado(Sede sede1,String categoria, LocalDate fechaRecogida, LocalDate fechaDevuelta)
 	{
-		Vehiculo.bloquearDisponibilidad(fechaRecogida,fechaDevuelta);;
-		
+		boolean encontrado=false;
+		Vehiculo vehiculoReservado= null;
+		int i=0;
+		String estado = "Alquilado";
+		while(encontrado==false && i< ConsolaPrincipal.listaVehiculos.size()) {
+			vehiculoReservado= ConsolaPrincipal.listaVehiculos.get(i);
+			String cat=vehiculoReservado.getCategoria();
+			Sede sedev = vehiculoReservado.getUbi();
+			boolean disp= vehiculoReservado.verificarDisponibilidad(fechaRecogida, fechaDevuelta);
+			System.out.println(disp);
+			if(cat.equals(categoria) && sede1.getnombre().equals(sedev.getnombre()) && disp==true) {
+				encontrado=true;
+				vehiculoReservado.bloquearDisponibilidad(estado,fechaRecogida,fechaDevuelta);
+			}
+			else {
+				vehiculoReservado= null;
+			}
+			i+=1;
+		}
+		return vehiculoReservado;
 	}
+
 
 }
