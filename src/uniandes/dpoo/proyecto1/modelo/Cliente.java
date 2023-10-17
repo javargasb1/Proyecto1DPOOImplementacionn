@@ -55,7 +55,7 @@ public class Cliente implements Usuario
 	public Reserva crearReserva(Cliente elCliente,String categoria,Sede sede,LocalDate fechaRecogida,LocalTime horaRecogida,boolean especial,ArrayList<Vehiculo>  listaVehiculos,LocalDate fechaDevuelta, ArrayList<LocalTime>rangoDeHoras,String temporada,Sede sedeEntrega,Double precio,ArrayList<Seguro> costoSeguros,Double costoConductorAdicional, ArrayList<ConductorAdicional> conductoresAdicionales)
 	{
 		
-		ArrayList<Usuario> listaempleados = Sede.getEmpleados();
+		ArrayList<Usuario> listaempleados = sede.getEmpleados();
 		boolean encontrado = false;
 		int i = 0;
 		Usuario empleadoreal = null;

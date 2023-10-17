@@ -33,7 +33,7 @@ public class Sede
 
 		return horario;
 	}
-	public static ArrayList<Usuario> getEmpleados() {
+	public ArrayList<Usuario> getEmpleados() {
 
 		return empleados;
 	}

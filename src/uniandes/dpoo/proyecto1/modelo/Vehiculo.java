@@ -86,11 +86,12 @@ public class Vehiculo
 		
 	}
 	
-	public void desbloquearDisponibilidad(LocalDate fechaRecogida, LocalDate fechaDevuelta)
+	public void desbloquearDisponibilidad(String estado2, LocalDate fechaRecogida, LocalDate fechaDevuelta)
 	{
 		for (LocalDate date = fechaRecogida; date.isBefore(fechaDevuelta); date = date.plusDays(1)) 
 		{
             disponibilidad.put(date, true);
+            estado.put(date, estado2);
         }
 		
 	}

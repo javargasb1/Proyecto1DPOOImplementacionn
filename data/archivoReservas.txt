@@ -1,1 +1,2 @@
 login:categoria:nombreSede:fechaRecogida:horaRecogida:especial:fechaDevuelta:rangoDeHoras:temporada:sedeEntrega:precio:Seguros:costoConductorAdicional:conductoresAdicionales
+cliente1;SUV;ChapiRenta;2023-10-16;10:00;1;2023-11-16;11:00,14:00;Baja;ChapiAlquila;985431.0;Seguro daños por choques,;0.0;*

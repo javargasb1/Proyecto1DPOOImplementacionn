@@ -52,7 +52,6 @@ public class ActualizadorEstadoVehiculo implements Usuario{
 			String cat=vehiculoReservado.getCategoria();
 			Sede sedev = vehiculoReservado.getUbi();
 			boolean disp= vehiculoReservado.verificarDisponibilidad(fechaRecogida, fechaDevuelta);
-			System.out.println(disp);
 			if(cat.equals(categoria) && sede1.getnombre().equals(sedev.getnombre()) && disp==true) {
 				encontrado=true;
 				vehiculoReservado.bloquearDisponibilidad(estado,fechaRecogida,fechaDevuelta);
@@ -64,6 +63,30 @@ public class ActualizadorEstadoVehiculo implements Usuario{
 		}
 		return vehiculoReservado;
 	}
+	public void actualizarEstado2(String estado, Sede sede1,String categoria, LocalDate fechaRecogida, LocalDate fechaDevuelta)
+	{
+		boolean encontrado=false;
+		Vehiculo vehiculoReservado= null;
+		int i=0;
+		while(encontrado==false && i< ConsolaPrincipal.listaVehiculos.size()) {
+			vehiculoReservado= ConsolaPrincipal.listaVehiculos.get(i);
+			String cat=vehiculoReservado.getCategoria();
+			Sede sedev = vehiculoReservado.getUbi();
+			boolean disp= vehiculoReservado.verificarDisponibilidad(fechaRecogida, fechaDevuelta);			
+			if(cat.equals(categoria) && sede1.getnombre().equals(sedev.getnombre()) && disp==true) {
+				encontrado=true;
+				if(estado.equals("Disponible")) {
+					vehiculoReservado.desbloquearDisponibilidad(estado,fechaRecogida, fechaDevuelta);
+				}
+				else {
+					vehiculoReservado.bloquearDisponibilidad(estado,fechaRecogida,fechaDevuelta);
+				}
+			}
+			else {
+				vehiculoReservado= null;
+			}
+			i+=1;
+		}
 
-
+	}
 }

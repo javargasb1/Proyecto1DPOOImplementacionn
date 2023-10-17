@@ -25,10 +25,9 @@ public class ControladorCliente
 	private static String sedeEntrega;
 	private static Double precio;
 	private static ArrayList<Seguro> costoSeguros;
-	private static Double costoConductorAdicional;
-	private static ArrayList<ConductorAdicional> conductoresAdicionales;
-	public static Reserva reserva;
-	
+	public static Double costoConductorAdicional;
+	public static ArrayList<ConductorAdicional> conductoresAdicionales;
+	public static Reserva reserva;	
 	public static void mostrarConsolaCliente(Cliente elCliente) throws IOException
 	{
 		boolean continuar = true;
@@ -46,12 +45,37 @@ public class ControladorCliente
 			 {
 				 recogerVehiculo(reserva);
 			 }
-			 else if(reserva==null) {
-				 
-			 }
-			 else
+			 else if(reserva==null) 
 			 {
-				 System.out.println("No haz creado tu reserva. Elige la opcion 1 para crearla");
+				 	boolean buscar = false;
+					int b = 0;
+					boolean buscar1 = false;
+					int b1 = 0;
+					Cliente cliente1 =null;
+					Reserva reserva1 = null;
+					while(buscar == false && b<ConsolaPrincipal.listaClientes.size())
+						
+					{	
+						Cliente cliente = ConsolaPrincipal.listaClientes.get(b);
+						while(buscar1 == false && b1<ConsolaPrincipal.listaReservas.size())
+						{	
+							reserva1 = ConsolaPrincipal.listaReservas.get(b);
+							cliente1 = reserva1.getcliente();
+							System.out.println(reserva1.getCostoConductorAdicional());
+							b1+=1;
+							if(cliente1.equals(cliente))
+							{
+								recogerVehiculo(reserva1);
+								buscar1=true;
+								buscar=true;
+							}
+						}
+					b +=1;
+					}
+					if(reserva1 ==null)
+					 {
+						 System.out.println("No haz creado tu reserva. Elige la opcion 1 para crearla");
+					 }
 			 }
 			 
 		 }
@@ -61,9 +85,37 @@ public class ControladorCliente
 			 {
 				 devolverVehiculo(reserva);
 			 }
-			 else
+			 else if(reserva==null) 
 			 {
-				 System.out.println("No haz creado tu reserva. Elige la opcion 1 para crearla");
+				 	boolean buscar = false;
+					int b = 0;
+					boolean buscar1 = false;
+					int b1 = 0;
+					Cliente cliente2 =null;
+					Reserva reserva2 = null;
+					while(buscar == false && b<ConsolaPrincipal.listaClientes.size())
+						
+					{	
+						Cliente cliente = ConsolaPrincipal.listaClientes.get(b);
+						while(buscar1 == false && b1<ConsolaPrincipal.listaReservas.size())
+						{	
+							reserva2 = ConsolaPrincipal.listaReservas.get(b);
+							cliente2 = reserva2.getcliente();
+							System.out.println(reserva2.getCostoConductorAdicional());
+							b1+=1;
+							if(cliente2.equals(cliente))
+							{
+								devolverVehiculo(reserva2);
+								buscar1=true;
+								buscar=true;
+							}
+						}
+					b +=1;
+					}
+					if(reserva2 ==null)
+					 {
+						 System.out.println("No haz creado tu reserva. Elige la opcion 1 para crearla");
+					 }
 			 }
 			 
 		 }
@@ -222,6 +274,11 @@ public class ControladorCliente
 			reserva.actualizarPrecio();
 			ConsolaPrincipal.listaReservas.add(reserva);
 			reEscribirReservas();
+			temporada = reserva.getTemporada();
+			precio = (Double) reserva.getPrecio();
+			Categoria nuevacategoria = new Categoria(categoria,fechaRecogida,fechaDevuelta, temporada, sedeRecoger, sedeEntrega,precio,costoSeguros,costoConductorAdicional);
+			Double precioparcial = nuevacategoria.pago30porciento(categoria,fechaRecogida,fechaDevuelta, temporada, sedeRecoger, sedeEntrega,precio,costoSeguros,costoConductorAdicional);
+			System.out.println("Para confirmar su reserva debe pagar el 30% del costo del alquiler. Este corresponde a $:" + precioparcial);
 		}
 		else {
 			System.out.println("No hay vehiculos disponibles con esa categoria, en esas fechas y en esa sede, vuelva a hacer una nueva reserva.");
@@ -231,8 +288,6 @@ public class ControladorCliente
 
 	public static void recogerVehiculo(Reserva reserva) throws IOException
 	{
-		//cuando el vehículo se recoge se debe pagar por el servicio completo. Además, en el momento en el que se recoge un vehículo la agencia realiza un bloqueo sobre la tarjeta de crédito 
-		//del cliente que es desactivado cuando se entrega de nuevo en una sede de la empresa
 				
 		LocalDate fecha = reserva.getfechaRecogida();
 		LocalTime hora = LocalTime.now();
@@ -246,8 +301,9 @@ public class ControladorCliente
 		LocalTime horasup = null;
 		while(encontrado == false && i<ConsolaPrincipal.listaSedes.size())
 		{
-			sedeRecoger = ConsolaPrincipal.listaSedes.get(i);
-			if (sedeRecoger.getnombre().equals(sede))
+			Sede sede1 = ConsolaPrincipal.listaSedes.get(i);
+			String sede2 = sede1.getnombre();
+			if (sedeRecoger.getnombre().equals(sede2))
 			{
 				encontrado = true;
 				horario = sedeRecoger.gethorario();
@@ -257,6 +313,7 @@ public class ControladorCliente
 			i +=1;
 				
 		}
+
 		if (ahorafecha.equals(fecha) && hora.isAfter(horainf)&& hora.isBefore(horasup))
 		{
 		System.out.println("\n----------- ES HORA DE RECOGER TU VEHICULO ----------- \n");
@@ -265,6 +322,7 @@ public class ControladorCliente
 		while(salir ==true)
 		{
 		String conductor = input("\nHabrán otros conductores? (SI/NO): \n");
+		costoConductorAdicional=0.0;
 		while (conductor.equals("SI"))
 		{
 			String nombre = input ("\nIngrese su nombre: \n");
@@ -283,12 +341,20 @@ public class ControladorCliente
 			String licencia3 = input ("\nIngrese la fecha de vencimiento con el formato AA-MM-DD: \n");
 			LicenciaConduccion licencia = new LicenciaConduccion(licencia1, licencia2, licencia3);
 			ConductorAdicional nuevoConductor = new ConductorAdicional(nombre,contacto,nacimiento,nacionalidad,documento,licencia);
-			costoConductorAdicional+=60000;
+			costoConductorAdicional+=60000.0;
 			conductoresAdicionales= new ArrayList<ConductorAdicional>();
 			conductoresAdicionales.add(nuevoConductor);
-			reserva.actualizarConductores(costoConductorAdicional,conductoresAdicionales);
 			conductor = input("\nDesea adicionar otro conductor? (SI/NO): \n");
 		}
+		ConsolaPrincipal.listaReservas.remove(reserva);
+		String esp = reserva.getEspecial();
+		boolean especial =false;
+		if (esp.equals("1"))
+		{
+			especial=true;
+		}
+		Reserva actualizarreserva = new Reserva(reserva.getcliente(), reserva.getcategoria(), reserva.getsede(), reserva.getfechaRecogida(), reserva.gethoraRecogida(), especial,  reserva.getlistaVehiculos(), reserva.getfechaDevuelta(),  reserva.getrangoHoras(), reserva.getTemporada(), reserva.getsedeEntrega(), reserva.getPrecio(),reserva.getCostosSeguro(), costoConductorAdicional, conductoresAdicionales,  reserva.getVehiculo());
+		ConsolaPrincipal.listaReservas.add(actualizarreserva);
 		if (conductor.equals("NO"))
 		{
 			salir = false;
@@ -302,15 +368,25 @@ public class ControladorCliente
 		System.out.println("Modelo: "+reserva.getVehiculo().getModelo()+"\n");
 		System.out.println("Tipo de Transmision: "+reserva.getVehiculo().getTipoTransmision()+"\n");
 		System.out.println("Ubicacion: "+reserva.getVehiculo().getUbi().getnombre()+"\n");
+		Categoria nuevacategoria = new Categoria(reserva.getcategoria(),reserva.getfechaRecogida(),reserva.getfechaDevuelta(), reserva.getTemporada(), reserva.getsede(), reserva.getsedeEntrega(),reserva.getPrecio(),reserva.getCostosSeguro(),reserva.getCostoConductorAdicional());
+		
+		Double preciofinal = nuevacategoria.precioFinal(reserva.getcategoria(),reserva.getfechaRecogida(),reserva.getfechaDevuelta(), reserva.getTemporada(), reserva.getsede(), reserva.getsedeEntrega(),reserva.getPrecio(),reserva.getCostosSeguro(),reserva.getCostoConductorAdicional());
+		
+		System.out.println("Ahora debe pagar el restrante del costo del alquiler de su reserva. Este corresponde a $:" + preciofinal);
+		MedioDePago.bloquearTarjeta();
+		}
+		else
+		{
+			System.out.println("No es hora de recoger tu vehiculo");
 		}
 	}
 	
 	private static void devolverVehiculo(Reserva reserva2) {
-		LocalDate fecha = reserva.getfechaDevuelta();
-		ArrayList<LocalTime> rangoDeHoras =reserva.gethorasDevuelta();
+		LocalDate fecha = reserva2.getfechaDevuelta();
+		ArrayList<LocalTime> rangoDeHoras =reserva2.gethorasDevuelta();
 		LocalDate ahorafecha = LocalDate.now();
 		LocalTime ahoraTime = LocalTime.now();
-		Sede sedeDevolver = reserva.getsedeEntrega();
+		Sede sedeDevolver = reserva2.getsedeEntrega();
 
 
 		if (ahorafecha.equals(fecha)&&ahoraTime.isAfter(rangoDeHoras.get(0)) &&ahoraTime.isBefore(rangoDeHoras.get(1)))
@@ -318,14 +394,34 @@ public class ControladorCliente
 		{
 		System.out.println("\n----------- ES HORA DE DEVOLVER TU VEHICULO ----------- \n");
 		System.out.println("\n----------- CONFIRMA QUE ES TU VEHICULO: DEVUELTA ----------- \n");
-		System.out.println("Categoria: "+reserva.getVehiculo().getCategoria()+"\n");
-		System.out.println("Placa: "+reserva.getVehiculo().getPlaca()+"\n");
-		System.out.println("Color: "+reserva.getVehiculo().getColor()+"\n");
-		System.out.println("Modelo: "+reserva.getVehiculo().getModelo()+"\n");
-		System.out.println("Tipo de Transmision: "+reserva.getVehiculo().getTipoTransmision()+"\n");
-		System.out.println("Ubicacion: "+reserva.getVehiculo().getUbi().getnombre()+"\n");
-		String confirmacion = input("\nDesea adicionar otro conductor? (SI/NO): \n");
+		System.out.println("Categoria: "+reserva2.getVehiculo().getCategoria()+"\n");
+		System.out.println("Placa: "+reserva2.getVehiculo().getPlaca()+"\n");
+		System.out.println("Color: "+reserva2.getVehiculo().getColor()+"\n");
+		System.out.println("Modelo: "+reserva2.getVehiculo().getModelo()+"\n");
+		System.out.println("Tipo de Transmision: "+reserva2.getVehiculo().getTipoTransmision()+"\n");
+		System.out.println("Ubicacion: "+reserva2.getVehiculo().getUbi().getnombre()+"\n");
+		Vehiculo elVehiculo = reserva2.getVehiculo();
+		Sede sedeReal = elVehiculo.getUbi();
+		  ArrayList<Usuario> listaempleados = sedeReal.getEmpleados();
+		  boolean enc = false;
+		  int j = 0;
+		  Usuario empleadoreal = null;
+		  Usuario empleado;
+		  while(enc == false && j<listaempleados.size())
+			{
+				empleado = listaempleados.get(j);
+				if (empleado.getWork().equals("ActualizadorEstadoVehiculo"))
+				{
+					enc = true;
+					empleadoreal = empleado;
+				}
+				j +=1;
+					
+			}
+			ActualizadorEstadoVehiculo actualizar = new ActualizadorEstadoVehiculo(empleadoreal.getLogin(), empleadoreal.getClave(), empleadoreal.getNombre(), empleadoreal.getUbi());
+			actualizar.actualizarEstado2("Limpieza",sedeReal, categoria, fechaDevuelta, fechaDevuelta.plusDays(1));
 		}
+		
 		else {
 			System.out.println("No es el horario adecuado para devolver tu vehiculo, vulve despues.");
 		}
@@ -347,7 +443,10 @@ public class ControladorCliente
 			}
 			}
 			data+= ";"+laReserva.getCostoConductorAdicional().toString()+";";
-			if(laReserva.getConductores().size()==0) {
+			if(laReserva.getConductores()==null) {
+				data+="*";
+			}
+			else if(laReserva.getConductores().size()==0) {
 				data+="*";
 			}
 			else {

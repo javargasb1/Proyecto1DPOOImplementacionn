@@ -38,6 +38,7 @@ public class Sistema
 			System.out.println("Porfavor Ingrese los datos de pago: ");
 			String pago1 = input ("\nIngrese su numero de su tarjeta de credito: \n");
 			String pago2 = input ("\nIngrese la fecha de vencimiento de su tarjeta con el formato AA-MM-DD: \n");
+			LocalDate vencimiento= LocalDate.parse(pago2);
 			ArrayList<String> pago = new ArrayList<String>();
 			pago.add(pago1);
 			pago.add(pago2);

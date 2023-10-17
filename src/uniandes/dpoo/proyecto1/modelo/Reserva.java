@@ -84,11 +84,15 @@ public class Reserva
 	{
 		return temporada;
 	}
+	public ArrayList<Vehiculo>  getlistaVehiculos()
+	{
+		return listaVehiculos;
+	}
+	
 	
 	public void actualizarTemporada(LocalDate fechaRecogida) {
 		Month mes = fechaRecogida.getMonth();
 		int mesletra = mes.getValue();
-		System.out.println(mesletra);
 		if (mesletra == 6 || mesletra == 7|| mesletra == 12 || mesletra == 1)
 		{
 		//Se encuentra si el mes para hacer la reserva es junio, julio, diciembre o enero para saber si es temporada alta
@@ -129,7 +133,7 @@ public class Reserva
 		return esp;
 	}
 
-	public Object getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
 

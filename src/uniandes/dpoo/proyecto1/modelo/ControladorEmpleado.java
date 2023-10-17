@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -66,14 +67,65 @@ public class ControladorEmpleado
 		boolean continuar = true;
 		while (continuar)
 		{
-		System.out.println("\n Bienvenido Empleado ");
+		System.out.println("\n Bienvenido Actualizador ");
 		System.out.println("\nOpciones de la aplicación\n");
 		System.out.println("1. Actualizar estado de vehiculo");
 		System.out.println("2. Salir");
 		int opcion1 = Integer.parseInt(input("Por favor seleccione una opción:"));
 		 if (opcion1 ==1 ) 
 		 {
-			
+			  String placa =input("Por favor seleccione el vehiculo del que quiere actualizar el estado:");
+			  int i=0;
+			  boolean encontrado =false;
+			  Vehiculo elVehiculo = null;
+			  while(encontrado==false && i<ConsolaPrincipal.listaVehiculos.size()) {
+				  Vehiculo v = ConsolaPrincipal.listaVehiculos.get(i);
+				  if((v.getPlaca()).equals(placa)) {
+					  elVehiculo =v;
+					  encontrado=true;
+				  }
+				  
+			  }
+			  if(elVehiculo != null) {
+				  Sede sedeReal = elVehiculo.getUbi();
+				  ArrayList<Usuario> listaempleados = sedeReal.getEmpleados();
+				  boolean enc = false;
+				  int j = 0;
+				  Usuario empleadoreal = null;
+				  Usuario empleado;
+				  while(enc == false && j<listaempleados.size())
+					{
+						empleado = listaempleados.get(j);
+						if (empleado.getWork().equals("ActualizadorEstadoVehiculo"))
+						{
+							enc = true;
+							empleadoreal = empleado;
+						}
+						j +=1;
+							
+					}
+					ActualizadorEstadoVehiculo actualizar = new ActualizadorEstadoVehiculo(empleadoreal.getLogin(), empleadoreal.getClave(), empleadoreal.getNombre(), empleadoreal.getUbi());
+					boolean cont=true;
+					while(cont==true) {
+						System.out.println("\nOpciones de la actualizacion\n");
+						System.out.println("1. Bloquear/Desbloquear disponibilidad");
+						System.out.println("2. Salir");
+						int opcion2 = Integer.parseInt(input("Por favor seleccione una opción:"));
+						if(opcion2==1) {
+							LocalDate fechaRecogida = LocalDate.parse(input("Por favor seleccione la fecha incial para bloquear la disponibilidad en formato AAAA-MM-DD:"));
+							LocalDate fechaDevuelta = LocalDate.parse(input("Por favor seleccione la fecha final para bloquear la disponibilidad en formato AAAA-MM-DD:"));
+							String estado = input("Por favor ingrese el estado del vehiculo para estas fechas (Limpieza/Disponible/Alquilado):");
+							actualizar.actualizarEstado2(estado,sedeReal, categoria, fechaRecogida, fechaDevuelta);
+							System.out.println("El estado del vehiculo a sido actualizado"); 
+						}
+						else  {
+							cont=false;
+						}
+					}
+			  }
+			  else {
+				  System.out.println("El vehiculo no esta registrado"); 
+			  }
 		 }
 		 if (opcion1 ==2)
 		 {
